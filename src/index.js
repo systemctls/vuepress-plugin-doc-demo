@@ -5,7 +5,11 @@ const path = require('path')
 const renderDemoBlock = require('./common/render')
 const demoBlockContainers = require('./common/containers')
 module.exports = (options = {}, ctx) => {
+  
   return {
+    define: {
+      LANGCONFIGS: options.locales
+    },
     enhanceAppFiles: path.resolve(__dirname, './enhanceAppFile.js'),
     chainMarkdown(config) {
       config.plugin('containers')

@@ -30,12 +30,12 @@
         <span v-show="hovering">{{ controlText }}</span>
       </transition>
       <span
-        v-show="!copied"
+        v-show="!copied && isExpanded"
         :class="['copy-action', { 'copying ': copied }]"
         @click.stop="copyCode"
       >{{ copiedText }}</span>
       <transition name="bounce">
-        <span v-show="copied" class="copy-action copy-action-success">{{ copiedText }}</span>
+        <span v-show="copied" class="copy-action">{{ copiedText }}</span>
       </transition>
     </div>
   </div>
@@ -64,10 +64,10 @@ export default {
   },
   computed: {
     compoLang() {
-      return this.options.locales || defaultLang
+      return LANGCONFIGS || defaultLang
     },
     langConfig() {
-        return this.compoLang.filter(config => config.lang === this.$lang)[0]['demo-block'];
+        return this.compoLang.filter(config => config.lang === this.$site.themeConfig.lang)[0]['demo-block'];
     },
     blockClass() {
       return `demo-${this.$lang} demo-${this.$router.currentRoute.path
@@ -91,7 +91,7 @@ export default {
         return (
           this.$el.getElementsByClassName("description")[0].clientHeight +
           this.$el.getElementsByClassName("code-content")[0].clientHeight +
-          20
+          25
         );
       }
       return this.$el.getElementsByClassName("code-content")[0].clientHeight;
@@ -160,7 +160,7 @@ export default {
 .demo-block {
   border: solid 1px #ebebeb;
   border-radius: 3px;
-  transition: 0.2s;
+  transition: 0.4s;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -178,11 +178,10 @@ export default {
 }
 .demo-block .meta {
   background-color: #282c34;
-  border: solid 1px #ebebeb;
   border-radius: 3px;
   overflow: hidden;
   height: 0;
-  transition: height 0.2s;
+  transition: height 0.4s;
 }
 .demo-block .description {
   padding: 20px;
@@ -267,7 +266,7 @@ export default {
   color: #409eff;
 }
 .demo-block .demo-block-control.copying {
-  transform: translateX(-44px);
+  /* transform: translateX(-44px); */
 }
 .demo-block .demo-block-control .copy-action-success {
   color: #f5222d;
@@ -281,7 +280,7 @@ export default {
   opacity: 0;
   transform: translateX(10px);
 }
-.demo-block .demo-block-control .bounce-enter-active {
+/* .demo-block .demo-block-control .bounce-enter-active {
   animation: bounce-in 0.5s;
 }
 @keyframes bounce-in {
@@ -294,7 +293,7 @@ export default {
   100% {
     transform: scale(1);
   }
-}
+} */
 .demo-block .demo-block-control .control-button {
   line-height: 26px;
   position: absolute;
