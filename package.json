@@ -1,6 +1,6 @@
 {
-  "name": "vuepress-plugin-demo-container",
-  "version": "0.2.0",
+  "name": "vuepress-plugin-doc-demo",
+  "version": "0.0.1",
   "description": "Vuepress plugin for demo block.",
   "main": "src/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/calebman/vuepress-plugin-demo-container.git"
+    "url": "https://github.com/wc-code/vuepress-plugin-doc-demo.git"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -37,20 +37,6 @@
     "demo",
     "block"
   ],
-  "author": "JianhuiChen",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/calebman/vuepress-plugin-demo-container/issues"
-  },
-  "homepage": "https://github.com/calebman/vuepress-plugin-demo-container#readme",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $GIT_PARAMS"
-    }
-  }
+  "author": ""
+  
 }
