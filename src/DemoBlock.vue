@@ -67,7 +67,8 @@ export default {
       return LANGCONFIGS || defaultLang
     },
     langConfig() {
-        return this.compoLang.filter(config => config.lang === this.$site.themeConfig.lang)[0]['demo-block'];
+      let _arr = eval(this.compoLang)
+      return _arr.filter(config => config.lang === this.$site.themeConfig.lang)[0]['demo-block'];
     },
     blockClass() {
       return `demo-${this.$lang} demo-${this.$router.currentRoute.path
